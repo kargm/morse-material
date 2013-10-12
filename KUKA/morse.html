@@ -132,10 +132,10 @@
         <video style="position:absolute;top:380px; right:250px;width:300px" src="../media/videos/bullet.webm"></video>
     <details>
         <ul>
-            <li> primary a 3D modeller
-            <li> provide a 3D game engine, support shaders
-            <li> Switch from the modeller to the simulation == press 'P'
-            <li> BGE: written in C++, extensible in Python + logic bricks
+            <li>primarily a 3D modeller
+            <li>provide a 3D game engine, support shaders
+            <li>Switch from the modeller to the simulation == press 'P'
+            <li>BGE: written in C++, extensible in Python + logic bricks
             <li>Bullet is integrated to the BGE, state-of-the art open-source library
             <li>support for rigid bodies and soft bodies simulation
             <li>limited support for dynamics (Vehicle class)
@@ -150,7 +150,7 @@
 	 <video style="position:absolute;top:170px; left:400px;width: 320px;" src="../media/videos/grasp_dvc3d.webm"></video>
 		<div style="position:absolute;top:360px; left:400px;width: 320px; text-align: center;">DVC3D</div>
 		<div style="position:absolute;top:360px; left:50px;width: 320px; text-align: center;">Bullet</div>
-		<div style="position:absolute;top:420px; left:50px;">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines.</div>
+		<div style="position:absolute;top:420px; left:50px;">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
 </section>
 
 
@@ -309,7 +309,7 @@ Scroll there to quickly show the available components.
             <ul>
             <li><img style="height: 21px; margin-bottom: -5px;" src="../media/images/logo-ros.png" />
             <li><img style="height: 21px; margin-bottom: -5px;" src="../media/images/logo-yarp.png" />
-            <li>GenoM/pocolibs
+            <li>GenoM/Pocolibs
             <li>OpenRTM
             <li>MOOS
             </ul>
@@ -328,24 +328,36 @@ Scroll there to quickly show the available components.
 </details>
 </section>
 
-<section>
-    <figure>
-        <video style="left:0px" src="../media/videos/hri.webm"></video> 
-        <figcaption style="color:white">Human-Robot interaction</figcaption>
-    </figure>
-    <details>
+<section> 
+	<h2>Challenges for simulated HRI</h2>
+	<ul>
+		<li>Intuitive Interface
+		<li>Controllable via Keyboard and Mouse (or Kinect)
+		<li>Enable pick- and place actions, support switches
+		<li>Realistic postures and actions
+		<li>Simulated full body motion tracking
+	</ul>
+	<details>
     <ul>
-        <li>Human avatar, that can be controlled from the keyboard or RGB-D skeleton tracker
-        <li>Simulated object recognition using MORSE "semantic camera" and ROS TF
-        <li>Visibility of objects given by the semantic cameras (human block the view)
-        <li>interactive environment, coded with Blender BGE logic bricks
+        <li>Control similar to 3D Computer games (Mouse for direction, keyboard for moving)
+		<li>3rd person view behind avtar for movement, first person view for object interactions
+		<li>interactive environment, coded with Blender BGE logic bricks
+		<li>Objects placement using Blender Internal IK (ITasc)
+		<li>Simulated object recognition using MORSE "semantic camera" and ROS TF   
     </ul>
     </details>
 </section>
 
 <section>
-    <h3>Multi-node</h3>
-    <video muted style="left:0px;width:800px" src="../media/videos/morse_multi.webm#t=3"></video>
+    <figure>
+        <video style="left:0px" src="../media/videos/hri.webm"></video> 
+        <!--figcaption style="color:white">Human-Robot interaction</figcaption-->
+    </figure>
+</section>
+
+<section>
+    <h3>Distributed Multi-Node Multi-Robot Simulation</h3>
+    <video muted style="left:0px;width:800px" src="../media/videos/morse_multi.webm#t=15"></video>
 <details>
 <ul>
     <li>Two MORSE instance running and a "multinode-server"
@@ -380,22 +392,116 @@ Scroll there to quickly show the available components.
 		</ul-->
 	  <li>Expectations for Human Robot Interaction
 		<ul>
+			<li>Low Cost Activity Recognition
 			<li>A General Framework for expectations
 			<li>Simulated Application Scenarios
-			<li>Low Cost Activity Recognition
 			<li>Real World Application 
 		</ul>
 	  <li>Student Project: HRI Interface for B21
     </ul>
      <details>
 		<ul>
-        <li>Structure of the talk as follows:</li>
-        <li>First generally introduce the MORSE project and give a little example of it use, </li>
-        <li>... then Pierrick will show you some more details and talk about HRI and distributed simulations.</li>
+        <li>So far for the MORSE simulator, in the next 10 minutes, I want to give you a general overview about what I have done during my PhD except for working on the simulator</li>
 		</ul>
     </details>
 </section>
 
+<section>
+<h2>Goal and Challenges</h2>
+<ul>
+	<li>Warum wollen wir das (Vorteile für Robo)</li>
+	<li>Was ist das Ziel</li>
+	<li>Wo liegen Herausforderungen?</li>
+</ul>	
+</section>
+
+<section>
+	<h2>Low Cost Activity Recognition using Context Dependent Spatial Regions</h2>
+		<!--ul>
+			<li>Scenario: Robots working together with humans in domestic environments
+			<li>Goal: Include models of human activities into robot planning
+			<li>Human Motion tracking using Kinect sensors 
+		</ul-->	
+		<div style="text-align: center;">
+		<img style="position:absolute;top:220px; left:145px; width: 80%;" src="../media/images/intro_1.png"/>
+		</div>	
+		 <details>
+			<ul>
+	        <li>Das Bild hier zeigt ganz gut, was wir uns als Ziel gesetzt haben</li>
+			<li>Activity Recognition für Roboter in Alltagssituationen (Bild)</li>
+			<li>Basierend auf Motion tracking Daten von Kinect</li> 
+			</ul>
+	    </details>
+</section>
+
+<section>
+	<h2>Models of Human Activities</h2>
+	<ul>
+		<li><strong>Spatial model</strong> representing regions where humans generally are located during pick- and place tasks</li>
+		<!--li>Use High-Level Hierarchical HMM to perform Activity Recognition observing human task performance</li-->
+		
+			<img style="position:absolute;top:350px; left:100px; width: 30%;" src="../media/images/SPRAM_data_overview.png"/>
+			<img style="position:absolute;top:375px; left:420px; width: 30%;" src="../media/images/full_spatial_model_1.png"/>
+	</ul>
+</section>
+
+<section>
+	<h2>Models of Human Activities</h2>
+	<ul>
+		<li>Generate high-Level <strong>hierarchical HMM</strong> to perform activity recognition observing human task performance</li>
+			<img style="position:absolute;top:330px; left:150px; width: 60%;" src="../media/images/hhmm.png"/>
+	</ul>
+</section>
+
+<section>
+	<h2>HHMM-based Activity Recognition</h2>
+	<figure>
+	    <video muted style="left:0px" src="../media/videos/LoCoAcRe_sml.webm"></video> 
+	</figure>
+</section>
+
+<section>
+    <h2>Presentation outline</h2>
+    <ul>
+      <li style="color:grey;">The MORSE simulator
+		<!--ul>
+      		<li>Simulating with MORSE
+      		<li>MORSE Principles
+      		<li>Human-Robot Interaction
+      		<li>Distributed simulations
+      		<li>Still missing...
+		</ul-->
+	  <li style="color:grey;">Expectations for Human Robot Interaction
+		<!--ul>
+			<li>Low Cost Activity Recognition
+			<li>A General Framework for expectations
+			<li>Simulated Application Scenarios
+			<li>Real World Application 
+		</ul-->
+	  <li>Student Project: HRI Interface for B21
+    </ul>
+     <details>
+		<ul>
+        <li>As a last example, show student project...</li>
+		</ul>
+    </details>
+</section>
+<section>
+<figure>
+    <video muted style="left:0px" src="../media/videos/hri_interface_720p.webm"></video> 
+</figure>
+</section>
+
+
+<section>
+<h2>Weitere Projekte</h2>
+	<ul>
+		<li>Expectations Framework for Human Aware, reactive planning
+		<li>Multi floor SLAM
+		<li>...
+	</ul>	
+	ADD PICS!
+</section>
 
 <section id='end'>
     <h2>Questions?</h2>
@@ -407,9 +513,6 @@ Scroll there to quickly show the available components.
     <a href="https://sympa.laas.fr/sympa/subscribe/morse-users">subscribe on sympa.laas.fr</a>
 </ul>
 </section>
-
-
-
 
 <!-- Your Style -->
 <!-- Define the style of your presentation -->
