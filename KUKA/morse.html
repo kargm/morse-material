@@ -41,7 +41,7 @@
       		<li>Distributed simulations
       		<li>Still missing...
 		</ul-->
-	  <li>Expectations for Human Robot Interaction
+	  <li>Low Cost Activity Recognition
 		<!--ul>
 			<li>A General Framework for expectations
 			<li>Simulated Application Scenarios
@@ -90,7 +90,7 @@
 
 <section>
     <h2>The MORSE project</h2>
-    <ul class="incremental">
+    <ul>
       <li>100% open-source, permissive BSD-like license
       <li>Release 1.0 in Feb. 2013
       <li>~30K LOC, mostly Python
@@ -99,7 +99,7 @@
 
 <section>
     <h2>The MORSE community</h2>
-    <ul class="incremental">
+    <ul>
       <li>Academic project, baked by academics
       <li>Initiated at LAAS-CNRS in 2009
       <li>As of Apr. 2013, contributions by 12 institutions worldwide
@@ -116,7 +116,7 @@
 
 <section>
     <h2>The MORSE community</h2>
-    <ul class="incremental">
+    <ul>
       <li>15 different individual contributors for the last releases
       <li>> 630 commits in 2013 only
       <li>> 130 users on <tt>morse-users</tt>
@@ -150,7 +150,7 @@
 	 <video style="position:absolute;top:170px; left:400px;width: 320px;" src="../media/videos/grasp_dvc3d.webm"></video>
 		<div style="position:absolute;top:360px; left:400px;width: 320px; text-align: center;">DVC3D</div>
 		<div style="position:absolute;top:360px; left:50px;width: 320px; text-align: center;">Bullet</div>
-		<div style="position:absolute;top:420px; left:50px;">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
+		<div style="position:absolute;top:420px; left:50px;width: 720px;">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
 </section>
 
 
@@ -178,13 +178,36 @@
 </section>
 
 <section>
+	<h2>MORSE specific features</h2>
+	<ul>
+		<li><strong>Adjustable degree of realism</strong></li>
+		<li><strong>Human avatar for HRI scenarios</strong></li>
+		<li>Completely scriptable via Python</li>
+		<li>Blender for modeling</li>
+		<li>Bullet physics engine</li>
+		<li>Middleware independence</li>
+		<li>Distributed multi-node simulation</li>
+	</ul>
+	<details>
+		<ul>
+			<li>ROS users know Gazebo, and while Gazebo is a great simulator, there are also good reasons to take a closer look at MORSE!</li>
+			<li>Explain why I use MORSE: Human component, High-level sensors make it easy to test high-level resoning 
+			algorithms whithout dealing too much with low-level components (perception etc.)</li>
+			<li>High-level sensors: If you don't want to deal with navigation, use waypoint actuator, if you want to skip perception, 
+			use semantic camera</li>
+			<li>+ other avantages</li>
+		</ul>
+	</details>
+</section>
+
+<section>
 <h2>
 <pre>
 $ vim pr2_kitchen/defaults.py
 </pre>
 </h2>
 <br/>
-<div class="incremental">
+<div>
 
 
 <pre class="prettyprint">
@@ -224,7 +247,7 @@ env = Environment("kitchen.blend") # load custom 3d model
 $ morse run pr2_kitchen
 </pre>
 </h2>
-<div class="incremental">
+<div>
 	<video muted style="position:absolute;top:150px; left:0px; width: 100%;" src="../media/videos/pr2_mapping.webm"></video> 
 <!--img style="width:100%" src="../media/images/pr2_mapping.png"-->
 </div>
@@ -253,7 +276,7 @@ robot.append(motion)
 $ morse run pr2_kitchen
 </pre>
 </h2>
-<div class="incremental">
+<div>
 <video muted style="position:absolute;top:150px; left:0px; width: 100%;" src="../media/videos/pr2_move_base_wide.webm#t=3"></video> 
 </div>
 </section>
@@ -288,7 +311,7 @@ Scroll there to quickly show the available components.
 
 <section>
     <h3>MORSE Principles: Inner loop</h3>
-    <ul class="incremental" style="font-size:0.8em">
+    <ul style="font-size:0.8em">
         <li>2 interactions modalities: <b>datastreams</b> and <b>services</b>,
         <li>datastreams: <b>published</b> by MORSE for sensors, <b>read</b> for actuators,
         <li><b>strong decoupling</b>: components are <b>not aware</b> of surrounding interfaces/modifiers,
@@ -303,7 +326,7 @@ Scroll there to quickly show the available components.
 
 <section>
     <h3>MORSE Principles: Interfaces</h3>
-    <ul class="incremental" style="font-size:0.8em">
+    <ul style="font-size:0.8em">
         <li>Generic: <em>sockets</em>, <em>text</em>,
         <li>Specific to robotics: <em>middlewares</em>
             <ul>
@@ -329,13 +352,13 @@ Scroll there to quickly show the available components.
 </section>
 
 <section> 
-	<h2>Challenges for simulated HRI</h2>
+	<h2>Goals for simulated HRI Interface</h2>
 	<ul>
-		<li>Intuitive Interface
-		<li>Controllable via Keyboard and Mouse (or Kinect)
-		<li>Enable pick- and place actions, support switches
-		<li>Realistic postures and actions
-		<li>Simulated full body motion tracking
+		<li><strong>Intuitive</strong> Interface
+		<li>Controllable via <strong>Keyboard and Mouse</strong> (or Kinect)
+		<li>Enable <strong>pick- and place</strong> actions, support switches
+		<li><strong>Realistic</strong> postures and actions
+		<li>Simulated full body <strong>motion tracking</strong>
 	</ul>
 	<details>
     <ul>
@@ -370,11 +393,12 @@ Scroll there to quickly show the available components.
 <section>
     <h2>Still missing...</h2>
 
-    <ul class='incremental'>
+    <ul>
         <li>Faster-than-realtime simulation</li>
         <li>Explicit <em>timeline of events</em></li>
         <li>Formal support for logging/replay</li>
-        <li>Full support of PR2</li>
+        <!--li>Full support of PR2</li-->
+		<li>Force/torque sensores
         <li>...(you name it!)</li>
     </ul>
 </section>
@@ -382,7 +406,7 @@ Scroll there to quickly show the available components.
 <section>
     <h2>Presentation outline</h2>
     <ul>
-      <li>The MORSE simulator
+      <li style="color:grey;">The MORSE simulator
 		<!--ul>
       		<li>Simulating with MORSE
       		<li>MORSE Principles
@@ -390,14 +414,14 @@ Scroll there to quickly show the available components.
       		<li>Distributed simulations
       		<li>Still missing...
 		</ul-->
-	  <li>Expectations for Human Robot Interaction
+	  <li>Low Cost Activity Recognition
 		<ul>
-			<li>Low Cost Activity Recognition
-			<li>A General Framework for expectations
-			<li>Simulated Application Scenarios
-			<li>Real World Application 
+			<li>Goals
+			<li>Models of Human Activities
+			<li>HHMM-based Activity Recognition
+			<li>Video: Real World Application 
 		</ul>
-	  <li>Student Project: HRI Interface for B21
+	  <li style="color:grey;">Student Project: HRI Interface for B21
     </ul>
      <details>
 		<ul>
@@ -407,16 +431,7 @@ Scroll there to quickly show the available components.
 </section>
 
 <section>
-<h2>Goal and Challenges</h2>
-<ul>
-	<li>Warum wollen wir das (Vorteile für Robo)</li>
-	<li>Was ist das Ziel</li>
-	<li>Wo liegen Herausforderungen?</li>
-</ul>	
-</section>
-
-<section>
-	<h2>Low Cost Activity Recognition using Context Dependent Spatial Regions</h2>
+	<h2>Low Cost Activity Recognition</h2>
 		<!--ul>
 			<li>Scenario: Robots working together with humans in domestic environments
 			<li>Goal: Include models of human activities into robot planning
@@ -435,6 +450,16 @@ Scroll there to quickly show the available components.
 </section>
 
 <section>
+<h2>Goals</h2>
+<ul>
+	<li>Robot should be aware of human task execution to enable more human aware and adaptive planning</li>
+	<li>Inexpensive and unobtrusive sensor setup</li>
+	<li>Simple and noise-resistant features</li>
+	<li>Anticipate likely future activities</li>
+</ul>	
+</section>
+
+<section>
 	<h2>Models of Human Activities</h2>
 	<ul>
 		<li><strong>Spatial model</strong> representing regions where humans generally are located during pick- and place tasks</li>
@@ -446,11 +471,10 @@ Scroll there to quickly show the available components.
 </section>
 
 <section>
-	<h2>Models of Human Activities</h2>
-	<ul>
-		<li>Generate high-Level <strong>hierarchical HMM</strong> to perform activity recognition observing human task performance</li>
-			<img style="position:absolute;top:330px; left:150px; width: 60%;" src="../media/images/hhmm.png"/>
-	</ul>
+	<h2>HHMM-based Activity Recognition</h2>
+		<div style="position:absolute;top:180px; left:50px;width: 720px;">Generate high-Level <strong>hierarchical HMM (HHMM)</strong> to perform activity recognition observing human task performance</div>
+			<img style="position:absolute;top:280px; left:150px; width: 70%;" src="../media/images/hhmm.png"/>
+
 </section>
 
 <section>
@@ -471,7 +495,7 @@ Scroll there to quickly show the available components.
       		<li>Distributed simulations
       		<li>Still missing...
 		</ul-->
-	  <li style="color:grey;">Expectations for Human Robot Interaction
+	  <li style="color:grey;">Low Cost Activity Recognition
 		<!--ul>
 			<li>Low Cost Activity Recognition
 			<li>A General Framework for expectations
@@ -486,6 +510,19 @@ Scroll there to quickly show the available components.
 		</ul>
     </details>
 </section>
+
+<section>
+	<h2>Goals</h2>
+	<ul>
+		<li>GUI for Robot control via natural language
+		<li>Selection of Speech Recognition (pocketsphinx VS Google)
+		<li>Grammatical analysis of commands	
+		<li>Interface to knowledge base (KnowRob)
+		<li>Include (Emergency) Stop of robot
+	</ul>
+</section>
+
+
 <section>
 <figure>
     <video muted style="left:0px" src="../media/videos/hri_interface_720p.webm"></video> 
@@ -496,22 +533,23 @@ Scroll there to quickly show the available components.
 <section>
 <h2>Weitere Projekte</h2>
 	<ul>
+		<li>Learning Models of human activities
+		<li>Motion tracking dataset about human morning routine
 		<li>Expectations Framework for Human Aware, reactive planning
-		<li>Multi floor SLAM
-		<li>...
+		<li>Multi floor Graph-based SLAM
 	</ul>	
-	ADD PICS!
+	<img style="position:absolute;top:440px; left:40px; height: 18%;" src="../media/images/clustering.png"/>
+	<img style="position:absolute;top:440px; left:192px; height: 18%;" src="../media/images/dataset.png"/>
+	<img style="position:absolute;top:440px; left:320px; height: 18%;" src="../media/images/jido_confused.png"/>
+	<img style="position:absolute;top:440px; left:450px; height: 18%;" src="../media/images/multi_floor_slam_1.png"/>
+	<img style="position:absolute;top:440px; left:620px; height: 18%;" src="../media/images/multi_floor_slam_2.png"/>
+
 </section>
 
 <section id='end'>
     <h2>Questions?</h2>
-
-<ul>
-    <li>One website: <tt><nobr><a href="http://morse.openrobots.org">morse.openrobots.org</a></nobr></tt>
-    <li>Two mailing-lists: <tt><nobr>morse-users@laas.fr</nobr></tt> and
-    <tt><nobr>morse-dev@laas.fr</nobr></tt><br/>
-    <a href="https://sympa.laas.fr/sympa/subscribe/morse-users">subscribe on sympa.laas.fr</a>
-</ul>
+	<img align="center" style="position:absolute;top:30%; left:270px; height: 40%;" src="../media/images/qrcode_hcai.png"/>
+	<h3 style="position:absolute;top: 400px;">http://hcai.in.tum.de/members/kargm</h3>
 </section>
 
 <!-- Your Style -->
