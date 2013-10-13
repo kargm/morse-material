@@ -6,9 +6,13 @@
 <script type="text/javascript" src="../media/js/prettify/prettify.js"></script>
 
 <section>
-    <h1>Introducing MORSE and myself<br/></h1>
+    <h1>Introducing MORSE and an Approach for Low Cost Activity Recognition<br/></h1>
     <footer>
-    <img style="float:left; margin:0px;width:auto;height:70px" src="../media/logos/tum.svg"/>
+    
+	<!--img style="float:left; margin:0px;width:auto;height:60px;" src="../media/logos/tum.svg"/-->
+	<img style="float:left; margin:0px;width:auto;height:90px;" src="../media/logos/logo-tum-ias.png"/>
+	
+	
     Michael Karg<br /> October 2013</footer>
 </section>
 
@@ -70,7 +74,7 @@
       		<li>Distributed simulations
       		<li>Still missing...
 		</ul>
-	  <li style="color: grey;">Expectations for Human Robot Interaction
+	  <li style="color: grey;">Low Cost Activity Recognition
 		<!--ul>
 			<li>A General Framework for expectations
 			<li>Simulated Application Scenarios
@@ -150,7 +154,7 @@
 	 <video style="position:absolute;top:170px; left:400px;width: 320px;" src="../media/videos/grasp_dvc3d.webm"></video>
 		<div style="position:absolute;top:360px; left:400px;width: 320px; text-align: center;">DVC3D</div>
 		<div style="position:absolute;top:360px; left:50px;width: 320px; text-align: center;">Bullet</div>
-		<div style="position:absolute;top:420px; left:50px;width: 720px;">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
+		<div style="position:absolute;top:420px; left:50px;width: 720px;font-size:0.8emM">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
 </section>
 
 
@@ -300,7 +304,7 @@ $ morse run pr2_kitchen
 		<li>21 actuators
 		<li>2 human components
 	</ul>
-	<img style="position:absolute;top:350px;left: 120px; width: 70%;" src="../media/images/all_components_3rows.png"/>
+	<img style="position:absolute;top:320px;left: 120px; width: 70%;" src="../media/images/all_components_3rows.png"/>
 	
 <details>
 A click on the image redirect to MORSE Component Library in the on-line doc.<br/>
@@ -314,12 +318,12 @@ Scroll there to quickly show the available components.
 <section>
     <h3>MORSE Principles: Inner loop</h3>
     <ul style="font-size:0.8em">
-        <li>2 interactions modalities: <b>datastreams</b> and <b>services</b>,
-        <li>datastreams: <b>published</b> by MORSE for sensors, <b>read</b> for actuators,
-        <li><b>strong decoupling</b>: components are <b>not aware</b> of surrounding interfaces/modifiers,
-        <li><b>modifiers</b> alter the sensors/actuators data, typically to add noise,
-        <li>components' <i>local data</i> are exported/imported by <b>external interfaces</b> like sockets or ROS
-        <li>services: RPC-style interaction, can be <b>synchronous</b> or <b>asynchronous</b>
+        <li><b>Datastreams</b> and <b>services</b> for interaction,
+        <li>Datastreams: <b>published</b> by MORSE for sensors, <b>read</b> for actuators,
+        <li><b>Strong decoupling</b>: components are <b>not aware</b> of surrounding interfaces/modifiers,
+        <li><b>Modifiers</b> alter the sensors/actuators data, typically to add noise,
+        <li>Components' <i>local data</i> are exported/imported by <b>external interfaces</b> like sockets or ROS
+        <li>Services: RPC-style interaction, can be <b>synchronous</b> or <b>asynchronous</b>
     </ul>
 <details>
 - <a href="../media/images/main_loop.svg">main_loop.svg</a>
@@ -339,12 +343,12 @@ Scroll there to quickly show the available components.
             <li>MOOS
             </ul>
         <li>Mapping to interaction semantics: <em>RPC-oriented</em> or <em>datastream-oriented</em>
-        <li>Language <em>bindings</em> available for Python. Easy to develop for other languages through the socket interface.
+        <li>Language <em>bindings</em> for Python. Easy to develop for other languages through the socket interface.
         <li>Simulation <b>introspection</b> possible through sockets interface
     </ul>
 <details>
 <ul>
-    <li>ROS: well, you know... // YARP: Yet Another Robot Platform
+    <li>ROS: well, <strong>CONTRIBUTION:</strong>ROS middleware, mention problem Py2/3 etc.
     <li>GenoM/pocolibs: Generator of Modules and its communication layer, developed at LAAS
     <li>OpenRTM: Open source Robotic Technology Middleware, developed by Japan's National Institute of Advanced Industrial Science and Technology
     <li>MOOS: Mission Oriented Software Suite, developed at Oxford University
@@ -354,14 +358,16 @@ Scroll there to quickly show the available components.
 </section>
 
 <section> 
-	<h2>Goals for simulated HRI Interface</h2>
-	<ul>
+	<h3>Goals for simulated HRI Interface</h3>
+	<ul style="font-size:0.8em">
 		<li><strong>Intuitive</strong> Interface
 		<li>Controllable via <strong>Keyboard and Mouse</strong> (or Kinect)
 		<li>Enable <strong>pick- and place</strong> actions, support switches
 		<li><strong>Realistic</strong> postures and actions
 		<li>Simulated full body <strong>motion tracking</strong>
 	</ul>
+	<img style="position:absolute;top:380px; left:150px; width: 30%;" src="../media/images/morse_hri_3rd_person.png"/>
+	<img style="position:absolute;top:380px; left:400px; width: 30%;" src="../media/images/morse_hri_1st_person.png"/>
 	<details>
     <ul>
         <li>Control similar to 3D Computer games (Mouse for direction, keyboard for moving)
@@ -433,14 +439,14 @@ Scroll there to quickly show the available components.
 </section>
 
 <section>
-	<h2>Low Cost Activity Recognition</h2>
+	<h3>Low Cost Activity Recognition</h3>
 		<!--ul>
 			<li>Scenario: Robots working together with humans in domestic environments
 			<li>Goal: Include models of human activities into robot planning
 			<li>Human Motion tracking using Kinect sensors 
 		</ul-->	
 		<div style="text-align: center;">
-		<img style="position:absolute;top:220px; left:145px; width: 80%;" src="../media/images/intro_1.png"/>
+		<img style="position:absolute;top:170px; left:100px; width: 85%;" src="../media/images/intro_1.png"/>
 		</div>	
 		 <details>
 			<ul>
@@ -452,35 +458,38 @@ Scroll there to quickly show the available components.
 </section>
 
 <section>
-<h2>Goals</h2>
-<ul>
+<h3>Goals</h3>
+<ul style="font-size:0.8em">
 	<li>Robot should be aware of human task execution to enable more human aware and adaptive planning</li>
 	<li>Inexpensive and unobtrusive sensor setup</li>
 	<li>Simple and noise-resistant features</li>
 	<li>Anticipate likely future activities</li>
-</ul>	
+</ul>
 </section>
 
 <section>
-	<h2>Models of Human Activities</h2>
-	<ul>
+	<h3>Models of Human Activities</h3>
+	<ul style="font-size:0.8em">
 		<li><strong>Spatial model</strong> representing regions where humans generally are located during pick- and place tasks</li>
+		<li>Learned from observing <strong>motion tracking data</strong> during human task execution</li>
 		<!--li>Use High-Level Hierarchical HMM to perform Activity Recognition observing human task performance</li-->
 		
-			<img style="position:absolute;top:350px; left:100px; width: 30%;" src="../media/images/SPRAM_data_overview.png"/>
-			<img style="position:absolute;top:375px; left:420px; width: 30%;" src="../media/images/full_spatial_model_1.png"/>
+			<img style="position:absolute;top:330px; left:100px; width: 30%;" src="../media/images/SPRAM_data_overview.png"/>
+			<img style="position:absolute;top:365px; left:420px; width: 30%;" src="../media/images/full_spatial_model_1.png"/>
 	</ul>
 </section>
 
 <section>
-	<h2>HHMM-based Activity Recognition</h2>
-		<div style="position:absolute;top:180px; left:50px;width: 720px;">Generate high-Level <strong>hierarchical HMM (HHMM)</strong> to perform activity recognition observing human task performance</div>
-			<img style="position:absolute;top:280px; left:150px; width: 70%;" src="../media/images/hhmm.png"/>
+	<h3>HHMM-based Activity Recognition</h3>
+		<ul style="font-size:0.8em">
+			<li>Generate high-Level <strong>hierarchical HMM (HHMM)</strong> to perform activity recognition observing human task performance</li>
+			<li>Use Forward-Backward Algorithm to calculate posterior marginals of internal states of HHMM</li>
+		</ul>
+			<img style="position:absolute;top:320px; left:150px; width: 60%;" src="../media/images/hhmm.png"/>
 
 </section>
 
 <section>
-	<h2>HHMM-based Activity Recognition</h2>
 	<figure>
 	    <video muted style="left:0px" src="../media/videos/LoCoAcRe_sml.webm"></video> 
 	</figure>
@@ -514,42 +523,43 @@ Scroll there to quickly show the available components.
 </section>
 
 <section>
-	<h2>Goals</h2>
-	<ul>
+	<h3>Goals</h3>
+	<ul style="font-size:0.8em">
 		<li>GUI for Robot control via natural language
 		<li>Selection of Speech Recognition (pocketsphinx VS Google)
 		<li>Grammatical analysis of commands	
 		<li>Interface to knowledge base (KnowRob)
 		<li>Include (Emergency) Stop of robot
 	</ul>
+	<img style="position:absolute;top:350px; left:200px; width: 50%;" src="../media/images/leon_gui.png"/>
 </section>
 
 
 <section>
 <figure>
-    <video muted style="left:0px" src="../media/videos/hri_interface_720p.webm"></video> 
+    <video style="left:0px" src="../media/videos/hri_interface_720p.webm"></video> 
 </figure>
 </section>
 
 
 <section>
-<h2>Other Projects</h2>
-	<ul>
-		<li>Learning Models of human activities
+<h3>Other Projects</h3>
+	<ul style="font-size:0.8em">
+		<li>Learning models of human activities
 		<li>Motion tracking dataset about human morning routine
-		<li>Expectations Framework for human-aware, reactive planning
-		<li>Multi floor Graph-based SLAM
+		<li>Expectations framework for human-aware, reactive planning
+		<li>Multi floor graph-based SLAM
 	</ul>	
-	<img style="position:absolute;top:440px; left:40px; height: 18%;" src="../media/images/clustering.png"/>
-	<img style="position:absolute;top:440px; left:192px; height: 18%;" src="../media/images/dataset.png"/>
-	<img style="position:absolute;top:440px; left:320px; height: 18%;" src="../media/images/jido_confused.png"/>
-	<img style="position:absolute;top:440px; left:450px; height: 18%;" src="../media/images/multi_floor_slam_1.png"/>
-	<img style="position:absolute;top:440px; left:620px; height: 18%;" src="../media/images/multi_floor_slam_2.png"/>
+	<img style="position:absolute;top:420px; left:40px; height: 18%;" src="../media/images/clustering.png"/>
+	<img style="position:absolute;top:420px; left:192px; height: 18%;" src="../media/images/dataset.png"/>
+	<img style="position:absolute;top:420px; left:320px; height: 18%;" src="../media/images/jido_confused.png"/>
+	<img style="position:absolute;top:420px; left:450px; height: 18%;" src="../media/images/multi_floor_slam_1.png"/>
+	<img style="position:absolute;top:420px; left:620px; height: 18%;" src="../media/images/multi_floor_slam_2.png"/>
 
 </section>
 
 <section id='end'>
-    <h2>Questions?</h2>
+    <h3>Questions?</h3>
 	<img align="center" style="position:absolute;top:30%; left:270px; height: 40%;" src="../media/images/qrcode_hcai.png"/>
 	<h3 style="position:absolute;top: 400px;">http://hcai.in.tum.de/members/kargm</h3>
 </section>
