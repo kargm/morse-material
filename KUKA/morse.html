@@ -14,23 +14,11 @@
 	
 	
     Michael Karg<br /> October 2013</footer>
-</section>
-
-<section>
-	<figure>
-        <video muted style="left:0px" src="../media/videos/morse-1.0.webm#t=7"></video> 
-    </figure>
     <details>
-    <ul>
-        <li>MORSE video for the 1.0 release, in Feb. 2013</li>
-        <li>Lasts 1'42"</li>
-        <li>MORSE based on the open-source projects Blender, Bullet and Python</li>
-        <li>Blender primary a 3D modeller, provides a 3D game engine (with support of shaders)</li>
-    	<li>BGE: written in C++, extensible in Python + logic bricks</li>
-		<li>Bullet integrated in BGE, state-of-the art open-source library</li>
-        <li>support for rigid bodies and soft bodies simulation</li>
-        <li>It has a human avator which you can control like in 3D computer games for HRI</li>
-    </ul>
+        <ul>
+            <li>Ende Promotion TUM</li>
+            <li>paar Projekte vorstellen an denen ich während Diss gearbeitet habe...</li>
+        </UL>
     </details>
 </section>
 
@@ -56,9 +44,10 @@
     </ul>
      <details>
 		<ul>
-        <li>Structure of the talk as follows:</li>
-        <li>First generally introduce the MORSE project and give a little example of it use, </li>
-        <li>... then Pierrick will show you some more details and talk about HRI and distributed simulations.</li>
+            <li>... und zwar möchte Ich zuerst über den MORSE Sim reden, an dem ich in weiten Teilen mitentwickelt habe...</li>
+            <li>... befor ich dann auf einen Ansatz zur Aktivitätenerkennung von Alltagsaktivitäten von Menschen Basierend auf Motion Tracking Daten eingehe.</li>
+            <li>Zuletzt gehe ich noch kurz auf ein Projekt ein, das im Rahmen einer studentischen Arbeit entstanden ist und bei der es um eine Schnittstelle zur Steuerung
+                eines Roboters mittels natürlicher Sprache geht.</li>
 		</ul>
     </details>
 </section>
@@ -66,29 +55,48 @@
 <section>
     <h2>Presentation outline</h2>
     <ul>
-      <li>The MORSE simulator
+        <li>The MORSE simulator
+            <ul>
+                <li>Simulating with MORSE
+                    <li>MORSE Principles
+                        <li>Human-Robot Interaction
+                            <li>Distributed simulations
+                                <li>Still missing...
+                                    </ul>
+            <li style="color: grey;">Low Cost Activity Recognition
+                <!--ul>
+                 <li>A General Framework for expectations
+                 <li>Simulated Application Scenarios
+                 <li>Low Cost Activity Recognition
+                 <li>Real World Application
+                 </ul-->
+                <li style="color: grey;">Student Project: HRI Interface for B21
+                    </ul>
+    <details>
 		<ul>
-      		<li>Simulating with MORSE
-      		<li>MORSE Principles
-      		<li>Human-Robot Interaction
-      		<li>Distributed simulations
-      		<li>Still missing...
+            <li>Structure of the talk as follows:</li>
+            <li>First generally introduce the MORSE project and give a little example of it use, </li>
+            <li>... then Pierrick will show you some more details and talk about HRI and distributed simulations.</li>
 		</ul>
-	  <li style="color: grey;">Low Cost Activity Recognition
-		<!--ul>
-			<li>A General Framework for expectations
-			<li>Simulated Application Scenarios
-			<li>Low Cost Activity Recognition
-			<li>Real World Application 
-		</ul-->
-	  <li style="color: grey;">Student Project: HRI Interface for B21
-    </ul>
-     <details>
-		<ul>
-        <li>Structure of the talk as follows:</li>
-        <li>First generally introduce the MORSE project and give a little example of it use, </li>
-        <li>... then Pierrick will show you some more details and talk about HRI and distributed simulations.</li>
-		</ul>
+    </details>
+</section>
+
+<section>
+	<figure>
+        <video muted style="left:0px" src="../media/videos/morse-1.0.webm#t=7"></video>
+    </figure>
+    <details>
+        <ul>
+            <li>Beginnen möchte ich den Vortrag mit einem kurzen Video, das wir anläßlich der 1.0 Release von MORSE im Feb. 2013 geschnitten haben und eine gute Übersicht darüber gibt, was mit MORSE mittlerweile alles möglich ist..</li>
+            
+            <li>MORSE ist ein Open Source Projekt und basiert auf den Open-Source Projekten Blender, Bullet and Python</li>
+            <li>MORSE kommt mit einigen Robotern (Quadcopter, mobile Manipulatoren, UBoot), verschienste Arten von Sensoren und Aktuatoren, die sich auf verschiedenste Arten kombinieren lassen.</li>
+            <li>Beinhaltet Support für verschiedene Middlewares, von Sockets bis zu ROS, YARP, Pocolibs MOOS und mehr.</li>
+            <li>Und beinhaltet einen Menschen, der sich steuern lässt wie in 3D Computerspielen für HRI</li>
+            <li>Multnode simulation ermöglicht Simulation mehrerer Roboter auf mehrere Computer verteilt</li>
+            <li>Besonders Einstieg in MORSE sollte einfach sein, deswegen viele Tutorials wie ...</li>
+            <li>Einfach erweiterbar mit Python</li>
+        </ul>
     </details>
 </section>
 
@@ -130,12 +138,15 @@
 
 <section>
     <h2>Blender Game Engine + Bullet</h2>
-
-        <video style="position:absolute;top:150px; left:50px;width:260px" src="../media/videos/bge-bathroom.webm"></video>
-        <video style="position:absolute;top:150px; right:50px;width:260px" src="../media/videos/bge-yofrankie.webm"></video>
-        <video style="position:absolute;top:380px; right:250px;width:300px" src="../media/videos/bullet.webm"></video>
+        <video style="position:absolute;top:190px; left:50px;height:220px" src="../media/videos/bge-yofrankie.webm"></video>
+        <video style="position:absolute;top:190px; left:360px;height: 220px;" src="../media/videos/bullet.webm"></video>
+		<div style="position:absolute;top:430px; left:390px;width: 320px; text-align: center;">Bullet Physics</div>
+		<div style="position:absolute;top:430px; left:35px;width: 320px; text-align: center;">Blender Game Engine</div>
     <details>
         <ul>
+            <li>Blender ist eigentlich primär ein 3D Modellierungstool, bietet aber eine  3D game engine, die wir in MORSE verwenden.</li>
+            <li>Bullet integrated in BGE, state-of-the art open-source library</li>
+            <li>support for rigid bodies and soft bodies simulation</li>
             <li>primarily a 3D modeller
             <li>provide a 3D game engine, support shaders
             <li>Switch from the modeller to the simulation == press 'P'
@@ -153,8 +164,15 @@
 	 <video style="position:absolute;top:170px; left:50px;width:320px" src="../media/videos/grasp_bullet.webm"></video>
 	 <video style="position:absolute;top:170px; left:400px;width: 320px;" src="../media/videos/grasp_dvc3d.webm"></video>
 		<div style="position:absolute;top:360px; left:400px;width: 320px; text-align: center;">DVC3D</div>
+        <div style="position:absolute;top:400px; left:110px;width: 550px; text-align: center;font-size:0.4em;">(Video Courtesy of Binh Nguyen)</div>
 		<div style="position:absolute;top:360px; left:50px;width: 320px; text-align: center;">Bullet</div>
-		<div style="position:absolute;top:420px; left:50px;width: 720px;font-size:0.8emM">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
+		<div style="position:absolute;top:440px; left:50px;width: 720px;font-size:0.8emM">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
+    <details>
+        <ul>
+            <li>Es gibt auch Projekte, bei denen Bullet in Blender durch andere Physicengines ersetzt wurde, wie in dem folgenden Video</div>
+            <li>Obwohl wir mit Bullet Physics benutzen, sollte man erwähnen dass MORSE nie dazu gedacht war, physicalisch akkurat zu sein, allerdings macht Blender es einem leicht, die Physikengine zu wechseln indem es eine abstrakte API Layer zwischen Blender und er Physikengine bietet.</li>
+        </ul>
+    </details>
 </section>
 
 
