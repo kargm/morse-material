@@ -107,6 +107,12 @@
       <li>Release 1.0 in Feb. 2013
       <li>~30K LOC, mostly Python
     </ul>
+    <details>
+        <ul>
+            <li>MORSE ist ein 100 prozentiges Open Source Projekt unter einer toleranten BSD ähnlichen Lizenz</li>
+            <li>Februar diesen Jahres hatten wir unseren 1.0 Release mit ca. 30 K Zeilen Code, hauptsächlich in Python</li>
+        </ul>
+    </details
 </section>
 
 <section>
@@ -120,8 +126,8 @@
     
     <details>
 		<ul>
-        <li>MORSE evolved out of academics and was started in 2009 by LAAS CNRS in Toulouse...</li>
-        <li>... and as for now includes ... </li>
+            <li>MORSE ist als ein akademische Projekt entstanden und wurde 2009 am LAAS CNRS in Toulouse gestartet.</li>
+            <li>... und beinhaltet mittlerweile Beiträge von 12 Institutionen weltweit ... </li>
 		</ul>
     </details>
 </section>
@@ -134,6 +140,14 @@
       <li>> 130 users on <tt>morse-users</tt>
       <li> ... + the Blender and Bullet communities!
     </ul>
+    <details>
+        <ul>
+            <li>MORSE hat eine aktive Community und beinhaltet Contributions von 15 verschiedenen Personen...</li>
+            <li>... mit über 650 Commits alleine in 2013....</li>
+            <li>... und 130 Usern auf der MORSE users mailingliste</li>
+            <li>Außerdem haben BLender und Bullet selbst sehr aktive Communities.</li>
+        </ul>
+    </details>
 </section>
 
 <section>
@@ -144,17 +158,13 @@
 		<div style="position:absolute;top:430px; left:35px;width: 320px; text-align: center;">Blender Game Engine</div>
     <details>
         <ul>
-            <li>Blender ist eigentlich primär ein 3D Modellierungstool, bietet aber eine  3D game engine, die wir in MORSE verwenden.</li>
-            <li>Bullet integrated in BGE, state-of-the art open-source library</li>
-            <li>support for rigid bodies and soft bodies simulation</li>
-            <li>primarily a 3D modeller
-            <li>provide a 3D game engine, support shaders
-            <li>Switch from the modeller to the simulation == press 'P'
-            <li>BGE: written in C++, extensible in Python + logic bricks
-            <li>Bullet is integrated to the BGE, state-of-the art open-source library
-            <li>support for rigid bodies and soft bodies simulation
-            <li>limited support for dynamics (Vehicle class)
-    </ul>
+            <li>Blender, auf dem MORSE basiert, ist eigentlich primär ein 3D Modellierungstool, bietet aber eine  3D game engine, die wir für MORSE verwenden.</li>
+            <li>BGE: Geschrieben in C++, erweiterbar in Python + logic bricks .. </li>
+            <li>... und ein nettes Feature dieser GE ist dass sie die Open Source Bullet Physics Engine standardmässig integriert hat.</li>
+            <li>Bullet Physics bietet support für rigid bodies und soft bodies</li>
+            <li>Switch from the modeller to the simulation == press 'P'</li>
+            <li>limited support for dynamics (Vehicle class)</li>
+        </ul>
     </details>
 </section>
 
@@ -166,11 +176,15 @@
 		<div style="position:absolute;top:360px; left:400px;width: 320px; text-align: center;">DVC3D</div>
         <div style="position:absolute;top:400px; left:110px;width: 550px; text-align: center;font-size:0.4em;">(Video Courtesy of Binh Nguyen)</div>
 		<div style="position:absolute;top:360px; left:50px;width: 320px; text-align: center;">Bullet</div>
-		<div style="position:absolute;top:440px; left:50px;width: 720px;font-size:0.8emM">Abstract API layer between Blender and its Physics Engine offers possibility of adding different physics engines (ODE, DVC3D, ...).</div>
+		<div style="position:absolute;top:440px; left:50px;width: 720px;font-size:0.8emM">Abstract API layer between Blender and its Physics Engine offers
+            possibility of adding different physics engines (ODE, DVC3D, ...).</div>
     <details>
         <ul>
             <li>Es gibt auch Projekte, bei denen Bullet in Blender durch andere Physicengines ersetzt wurde, wie in dem folgenden Video</div>
-            <li>Obwohl wir mit Bullet Physics benutzen, sollte man erwähnen dass MORSE nie dazu gedacht war, physicalisch akkurat zu sein, allerdings macht Blender es einem leicht, die Physikengine zu wechseln indem es eine abstrakte API Layer zwischen Blender und er Physikengine bietet.</li>
+            <li>Obwohl wir mit Bullet Physics benutzen, sollte man erwähnen dass MORSE nie dazu gedacht war, physicalisch akkurat zu sein, allerdings macht
+                Blender es einem leicht, die Physikengine zu wechseln indem es eine abstrakte API Layer zwischen Blender und er Physikengine bietet.</li>
+            <li>Wir selbst haben das allerdings nie versucht, aber es gibt PRojekte wie z.B. das DVC3D von Binh Nguyen, der eine Erweiterung von DVC2D (Phyisc speziell
+                für Robotik/focuses on accurate robotics application)in Blender integriert hat</li>
         </ul>
     </details>
 </section>
@@ -189,7 +203,8 @@
 	</ul>
 	<details>
 		<ul>
-			<li>ROS users know Gazebo, and while Gazebo is a great simulator, there are also good reasons to take a closer look at MORSE!</li>
+			<li>Im Vergleich zu anderen Simulatoren hat MORSE ein paar spzielle Features.</li>
+            <li>Eine der Haupt-Design-Entscheidungen für MORSE war es, die Detaillevel der Simulation steuern zu können.</li>
 			<li>Explain why I use MORSE: Human component, High-level sensors make it easy to test high-level resoning 
 			algorithms whithout dealing too much with low-level components (perception etc.)</li>
 			<li>High-level sensors: If you don't want to deal with navigation, use waypoint actuator, if you want to skip perception, 
