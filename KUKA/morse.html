@@ -6,7 +6,7 @@
 <script type="text/javascript" src="../media/js/prettify/prettify.js"></script>
 
 <section>
-    <h1>Introducing MORSE and an Approach for Low Cost Activity Recognition<br/></h1>
+    <h1>MORSE, Activity Recognition and a Communication Interface for HRI<br/></h1>
     <footer>
     
 	<!--img style="float:left; margin:0px;width:auto;height:60px;" src="../media/logos/tum.svg"/-->
@@ -41,7 +41,7 @@
 			<li>Low Cost Activity Recognition
 			<li>Real World Application 
 		</ul-->
-	  <li>Student Project: HRI Interface for B21
+	  <li>A Communication Interface for HRI
     </ul>
      <details>
 		<ul>
@@ -58,12 +58,14 @@
     <ul>
         <li>The MORSE simulator
             <ul>
-                <li>Simulating with MORSE
-                    <li>MORSE Principles
-                        <li>Human-Robot Interaction
-                            <li>Distributed simulations
-                                <li>Still missing...
-                                    </ul>
+                <li>Video: MORSE 1.0
+                <li>The MORSE Project and Community
+                <li>Physics Simulation
+                <li>Human-Robot Interaction
+                <li>MORSE Features
+                <li>Human Robot Interaction
+                <li>Still missing...
+            </ul>
             <li style="color: grey;">Low Cost Activity Recognition
                 <!--ul>
                  <li>A General Framework for expectations
@@ -71,7 +73,7 @@
                  <li>Low Cost Activity Recognition
                  <li>Real World Application
                  </ul-->
-                <li style="color: grey;">Student Project: HRI Interface for B21
+                <li style="color: grey;">A Communication Interface for HRI
                     </ul>
     <details>
 		<ul>
@@ -236,7 +238,7 @@
 	</details>
 </section>
 
-<section>
+<!--section>
 <h2>
 <pre>
 $ vim pr2_kitchen/defaults.py
@@ -285,11 +287,10 @@ $ morse run pr2_kitchen
 </pre>
 </h2>
 <div>
-	<video muted style="position:absolute;top:150px; left:0px; width: 100%;" src="../media/videos/pr2_mapping.webm"></video> 
-<!--img style="width:100%" src="../media/images/pr2_mapping.png"-->
+	<video muted style="position:absolute;top:150px; left:0px; width: 100%;" src="../media/videos/pr2_mapping.webm"></video>
 </div>
 <reference><em>Using standard ROS <tt>robot_state_publisher</tt> and <tt>gmapping</tt></em></reference>
-</section>
+</section-->
 
 <section>
 	<h3>Available Robot Components</h3>
@@ -397,7 +398,7 @@ $ morse run pr2_kitchen
     <details>
 </section>
 
-<section>
+<!--section>
     <h3>Distributed Multi-Node Multi-Robot Simulation</h3>
     <video muted style="left:0px;width:800px" src="../media/videos/morse_multi.webm#t=15"></video>
 <details>
@@ -405,13 +406,9 @@ $ morse run pr2_kitchen
     <li>Es ist auch möglich, die Simulation auf mehrere Rechner zu verteilen, wie man in dem Video zum Beispiel sehen kann. Hier sieht man 2
         verschiedene Instanzen von MORSE, die über den "Multinode Server kommunizieren."</li>
     <li>Getestet haben wir das mit 10 nodes, hat geklappt</li>
-    
-    <!--li>Two MORSE instance running and a "multinode-server"
-    <li>Each robot is controlled by a node
-    <li>Tested with 10 nodes (needs to work on sync : WIP)</li-->
 </ul>
 </details>
-</section>
+</section-->
 
 <section>
     <h2>Still missing...</h2>
@@ -448,9 +445,10 @@ $ morse run pr2_kitchen
 			<li>Goals
 			<li>Models of Human Activities
 			<li>HHMM-based Activity Recognition
+            <li>Scenario: Human Morning Routine
 			<li>Video: Real World Application 
 		</ul>
-	  <li style="color:grey;">Student Project: HRI Interface for B21
+	  <li style="color:grey;">A Communication Interface for HRI
     </ul>
      <details>
 		<ul>
@@ -507,13 +505,16 @@ $ morse run pr2_kitchen
 		<li><strong>Spatial model</strong> representing regions where humans generally are located during pick- and place tasks</li>
 		<li>Learned from observing <strong>motion tracking data</strong> during human task execution</li>
 		<!--li>Use High-Level Hierarchical HMM to perform Activity Recognition observing human task performance</li-->
-			<img style="position:absolute;top:330px; left:100px; width: 30%;" src="../media/images/SPRAM_data_overview.png"/>
-			<img style="position:absolute;top:365px; left:420px; width: 30%;" src="../media/images/full_spatial_model_1.png"/>
+			<img style="position:absolute;top:330px; left:150px; width: 25%;" src="../media/images/SPRAM_data_overview.png"/>
+			<img style="position:absolute;top:365px; left:400px; width: 25%;" src="../media/images/full_spatial_model_1.png"/>
 	</ul>
     <details>
-        <li>Als Grundlage für unsere Daten haben wir (auf einem bereits vorhandenen datensatz) gelernt, wo Menschen normalerweise stehen wenn
-            sie Objekte aus Schränken, Schubladen oder ähnlichen Lagerplätzen holen.</li>
-        <li>
+        <li>Unser Szenario ist eine typische Küche wie im Bild links und ...</li>
+        <li>... als Grundlage für unsere Daten haben wir (auf einem bereits vorhandenen datensatz mit verschiedenen Menschen) gelernt, wo Menschen
+            relativ zu Möbeln wie Schränken, Schubladen oder ähnlichen Lagerplätzen stehen wenn sie Objekte aus herausholen oder hinein legen.</li>
+        <li>Aus diesen relativen Orten und einer semantisch annotierten Umgebungskarte können wie ein räumliches Modell erstellen, das Orte repräsentiert,
+            an denen der Mensch mit hoher Wahrscheinlichkeit gewisse Aktionen ausführt, wie zum Beispiel Objekte aus Schränken holen, etc.</li>
+        <li>So ein räumliches Modell sieht dann aus wie im rechten Bild. Die Orte haben wir in diesem Fall durch 2 dimensionale Gaußverteilungen modelliert.</li>
     </details>
 </section>
 
@@ -524,19 +525,48 @@ $ morse run pr2_kitchen
 			<li>Use <b>Forward-Backward Algorithm</b> to calculate posterior marginals of internal states of HHMM</li>
 		</ul>
 			<img style="position:absolute;top:320px; left:150px; width: 60%;" src="../media/images/hhmm.png"/>
+        <details>
+            <ul>
+                <li>Mit Hilfe von diesem räumlichen Modell kann man nun Motion Tracking Daten eines Menschen während der Ausübung von verschiedenen Altivitäten analysieren
+                    und sich einfach Zeitpunkte anschauen, an denen der Mensch für kurze Zeit still steht.</li>
+                <li>Jedes mal wenn das passiert, stellen wir eine Anfrage an unser räumliches Modell, zu welchem Möbelobjekt der aktuelle Ort höchstwahrscheinlich gehört.</li>
+                <li>Damit können wir Modelle von menschlichen Aktivitäten als hierarchische Hidden Markov MOdelle darstellen, die man sich in etwa so vorstellen kann wie im Bild</li>
+                <li>-- BILD ERKLÄREN --- Dazu sagen: Zustandsübergänge zwischen Aktivitäten haben wir nicht gelernt, sondern sind gegeben</li>
+                <li>Solche Modelle können wir dann verwenden um Aktivitäten aus Motion Tracking Daten zu erkennen indem wir die Wahrscheinlichkeiten für jede modellierte Aktivität
+                    gegeben der Observationen des Menschen berechnen. Dazu können wir den Forward-Backward Algorithmus verwenden, wie ich gleich an einem Beispiel zeigen werden...</li>
+            </ul>
+        </details>
 
 </section>
 
 <section>
 	<h3>Scenario: Human Morning Routine</h3>
     <img style="position:absolute;top:120px; left:150px; width: 60%;" src="../media/images/SPRAM_dataset.png"/>
-    
+    <details>
+        <ul>
+            <li>Dazu haben wir uns als Szenario eine Küchen in unserem Labor mit 2 Kinect Sensoren ausgestattet, eine für Motion Tracking Daten, eine für Visual Markers.</li>
+            <li>Diese Arbeit: Nur Motion Tracking Daten</li>
+            <li>Wir haben übrigens die gleiche Küche auch in Simulation nachgebaut, in der der gleiche Task mit dem simulierten Menschen ausgeführt werden kann, aber hier
+                erstmal nicht relevant</li>
+        </ul>
+    </details>
 </section>
 
 <section>
 	<figure>
 	    <video muted style="left:0px" src="../media/videos/LoCoAcRe_sml.webm"></video> 
 	</figure>
+    <details>
+        <ul>
+            <li>Das sieht dann so aus. links: Versuchsperson, rechts oben Wahrscheinlichkeit für verschiedene Pläne geplottet über die Zeit. Jede Farbe repräsentiert einen Plan
+                und unsere Aktivitätenerkennung berechnet jedes mal wenn eine neue Beobachtung kommt für jeden Plan, wie wahrscheinlich es ist, dass der jeweilige PLan gerade
+                ausgeführt wird.</li>
+            <li>Wie man erkennen kann, funktioniert das bei manchen Plänen relativ gut, bei anderen allerdings ist sich die Aktivitätenerkennung nicht besonders sicher, was der
+                Mensch gerade tut. Das war aber zu erwarten, da manche PLäne ziemlich ähnlich aussehen, wenn man sich nur auf die Orte verlässt, an denen der Mensch steht. </li>
+            <li>Wenn einem die Erkennunsraten basierend auf den Orten zu schlecht sind, kann man allerdings schon mit wenigen zusätzlichen Objektdetektionen die Erkennungsraten
+                erhöhen</li>
+        </ul>
+    </details>
 </section>
 
 <section>
@@ -557,11 +587,16 @@ $ morse run pr2_kitchen
 			<li>Simulated Application Scenarios
 			<li>Real World Application 
 		</ul-->
-	  <li>Student Project: HRI Interface for B21
+	  <li>A Communication Interface for HRI
+          <ul>
+              <li>Goals</li>
+              <li>System Overview</li>
+              <li>The Stanford Parser</li>
+          </ul>
     </ul>
      <details>
 		<ul>
-        <li>As a last example, show student project...</li>
+        <li>Im letzten Punkt für heute möchte ich noch über ein KOmmunikationsinterface für HUman Robot Interaction mittels natürlicher Sprache sprechen...</li>
 		</ul>
     </details>
 </section>
@@ -569,15 +604,56 @@ $ morse run pr2_kitchen
 <section>
 	<h3>Goals</h3>
 	<ul style="font-size:0.8em">
-		<li>GUI for Robot control via natural language
-		<li>Selection of Speech Recognition (pocketsphinx VS Google)
-		<li>Grammatical analysis of commands	
-		<li>Interface to knowledge base (KnowRob)
-		<li>Include (Emergency) Stop of robot
+		<li>GUI for Robot control via <b>natural language</b>
+		<li>Selection of <b>Speech Recognition</b> (pocketsphinx VS Google)
+		<li><b>Grammatical analysis</b> of commands
+		<li>Interface to <b>knowledge base</b> (KnowRob)
+		<li>Include <b>Emergency Stop</b> of robot
 	</ul>
 	<img style="position:absolute;top:350px; left:200px; width: 50%;" src="../media/images/leon_gui.png"/>
+    <details>
+        <ul>
+            <li>Das Projekt ist in Zusammanarbeit mit Leon Hoess, einem meiner Studenten entstanden und die Idee dazu kam mir eigentlich als ich mal wieder
+                mit der Spracherkennung meines Smartphones gespielt habe und mir dachte:
+                "Mittlerweile funktiniert das wirklich gut, das müsste doch reichen um einen Roboter damit sinnvolle Sachen machen zu lassen"</li>
+            <li>Also haben wir uns vorgenommen, eine GUI zu entwickeln, die uns genau das ermöglicht: DIe Steuerung eines Roboters mit Sprachbefehlen.</li>
+            <li>Wir haben dabei viel Wert auf Modularität gelegt, wollten übersichtliche Logging- und Debugausgeben, eine Anbindung an unsere Wissensbasis und einen Notaus</li>
+        </ul>
+    </details>
 </section>
 
+<section>
+    <h3>System Overview</h3>
+    <img style="position:absolute;top:150px; left:80px; width: 80%;" src="../media/images/hri_interface.png"/>
+    <details>
+        <ul>
+            <li>Implementiert haben wir das System folgendermaßen.</li>
+            <li>Zunächst wird die natürliche Sprache in Text umgewandelt. Dazu haben wir wie gesagt die Google Speech Recognition verwendet, wie sie auch in
+                Android Telefonen verwendet wird. Problematisch dabei war, dass die Spracherkennung zu der Zeit nur online funktioniert hat, was zu einer gewissen
+                Verzögerung führt. Mittlerweile allerdings kann man das auf Android Geräten auch offline machen.</li>
+            <li>Auch: pocketsphinx, aber nicht so gute Ergebnisse</li>
+            <li>Dann Stanford Parser zur syntaktischen analyse</li>
+            <li>Semantic Analyse: Übertrieben, besteht nur aus ein paar Befehlen in Wörterbuch wie z.B. "Go To OBJ". In diesem Fall wird die KB gerfragt ob das
+                geforderte Objekt in der Umgebung verfügbar ist, ob es eindutig ist und wenn ja, dann wird eine Position berechnet, die der Roboter erreichen kann
+                und so nah wie möglich am Objekt ist. Diese Position wird dann an die Navigation des Roboters (move_base) gegeben und der Roboter fährt hin.</li>
+        </ul>
+    </details>
+</section>
+
+<section>
+    <h3>The Stanford Parser</h3>
+    <ul style="font-size:0.8em">
+        <li><b>Syntactical analysis</b> of sentences using Context Free Grammars</li>
+            
+    </ul>
+    <img style="position:absolute;top:250px; left:200px; width: 50%;" src="../media/images/syntactical_structure.png"/>
+    <details>
+        <ul>
+            <li>Standford Parser benutzt kontextfreie Grammatiken um Sätze syntaktisch zu analysieren. Beispiel erklären.
+                
+        </ul>
+    </details>
+</section>
 
 <section>
 <figure>
@@ -600,12 +676,23 @@ $ morse run pr2_kitchen
 	<img style="position:absolute;top:420px; left:450px; height: 18%;" src="../media/images/multi_floor_slam_1.png"/>
 	<img style="position:absolute;top:420px; left:620px; height: 18%;" src="../media/images/multi_floor_slam_2.png"/>
 
+<details>
+    <ul>
+        <li>Nähern uns dem Ende. Letzte Folie: Nur kurz einige Projekte erwähnen, an denen ich im Laufe meiner Promotion sonst noch gerabeitet habe wie z.B. ...</li>
+        <li>Wenn Interesse zu diesen Themen oder denen, die ich heute vorgestellt habe, besteht, stehe ich jetzt ... UMSCHALTEN ...</li>
+    </ul>
+</details>
 </section>
 
 <section id='end'>
     <h3>Questions?</h3>
 	<img align="center" style="position:absolute;top:30%; left:270px; height: 40%;" src="../media/images/qrcode_hcai.png"/>
 	<h3 style="position:absolute;top: 400px;">http://hcai.in.tum.de/members/kargm</h3>
+    <details>
+        <ul>
+            <li>... für Fragen zur Verfügunge und weitere Informationen gibt es auch auf meiner Webseite unserer Gruppe.</li>
+        <ul>
+    </details>
 </section>
 
 <!-- Your Style -->
