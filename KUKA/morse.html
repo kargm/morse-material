@@ -175,10 +175,11 @@
 	 <video style="position:absolute;top:170px; left:50px;width:320px" src="../media/videos/grasp_bullet.webm"></video>
 	 <video style="position:absolute;top:170px; left:400px;width: 320px;" src="../media/videos/grasp_dvc3d.webm"></video>
 		<div style="position:absolute;top:360px; left:400px;width: 320px; text-align: center;">DVC3D</div>
-        <div style="position:absolute;top:400px; left:110px;width: 550px; text-align: center;font-size:0.4em;">(Video Courtesy of Binh Nguyen)</div>
+        <!--div style="position:absolute;top:400px; left:110px;width: 550px; text-align: center;font-size:0.4em;">(Video Courtesy of Binh Nguyen)</div-->
 		<div style="position:absolute;top:360px; left:50px;width: 320px; text-align: center;">Bullet</div>
 		<div style="position:absolute;top:440px; left:50px;width: 720px;font-size:0.8emM">Abstract API layer between Blender and its Physics Engine offers
             possibility of adding different physics engines (ODE, DVC3D, ...).</div>
+        <reference>Video Courtesy of Binh Nguyen</reference>
     <details>
         <ul>
             <li>Es gibt auch Projekte, bei denen Bullet in Blender durch andere Physicengines ersetzt wurde, wie in dem folgenden Video</div>
@@ -204,13 +205,13 @@
 	</ul>
 	<details>
 		<ul>
-			<li>Im Vergleich zu anderen Simulatoren hat MORSE ein paar spzielle Features.</li>
-            <li>Eine der Haupt-Design-Entscheidungen für MORSE war es, die Detaillevel der Simulation steuern zu können.</li>
-			<li>Explain why I use MORSE: Human component, High-level sensors make it easy to test high-level resoning 
-			algorithms whithout dealing too much with low-level components (perception etc.)</li>
-			<li>High-level sensors: If you don't want to deal with navigation, use waypoint actuator, if you want to skip perception, 
-			use semantic camera</li>
-			<li>+ other avantages</li>
+			<li>Im Vergleich zu anderen Simulatoren hat MORSE ein paar spezielle Features.</li>
+            <li>Eine der Haupt-Design-Entscheidungen für MORSE war es, die Detaillevel der Simulation steuern zu können. Jmd, der z.B. in der Computer Vision arbeitet,
+                wird vielleicht weniger genaue Motion Controller brauchen, oder Leute, die in high level Planning arbeiten wollen sich nicht die Objekterkennung aus Sensordaten
+                beschäftigen, sondern eher Perzeption des Roboters auf einer abstrakteren Ebene betrachten</li>
+            <li>MORSE hat ausserdem einen simulierten Menschen, zu dem ich gleich noch mehr erzählen werden...</li>
+            <li>... und kann in Python geskriptet werden</li>
+            <li>Außerdem ist MORSE unabhängig von Middlewares und unterstützt auch auf mehreren Rechnern verteilte Simulationen mit mehreren Robotern</li>
 		</ul>
 	</details>
 </section>
@@ -228,12 +229,9 @@
 	</ul>
 	<details>
 		<ul>
-			<li>ROS users know Gazebo, and while Gazebo is a great simulator, there are also good reasons to take a closer look at MORSE!</li>
-			<li>Explain why I use MORSE: Human component, High-level sensors make it easy to test high-level resoning 
-			algorithms whithout dealing too much with low-level components (perception etc.)</li>
-			<li>High-level sensors: If you don't want to deal with navigation, use waypoint actuator, if you want to skip perception, 
-			use semantic camera</li>
-			<li>+ other avantages</li>
+			<li>Die zwei wichtigsten Gründe, warum wir uns für MORSE entschieden haben, waren der steuerbare Level des Realismus, da wir uns in unserer Grupper zu einem großem Teil
+                mit high-level Planning beschäftigt haben ...</li>
+            <li>... und die Tatsache, dass schon ein MOdell eines Menschen verfügbar war, das man während der Simulation des Roboters in Echtzeit steuern konnte.
 		</ul>
 	</details>
 </section>
@@ -271,10 +269,11 @@ env = Environment("kitchen.blend") # load custom 3d model
 </div>
 	<details>
 		<ul>
-			<li>In the auomatically generated defaults.py file, we can define our simulation scenario...</li>
-			<li>In the first 2 lines: PR2 + ROS</li>
-			<li>Odemetry sensor + keyboard control (mention PR2_keyboard_teleop)</li>
-			<li>Custom 3 model of the env (in this case blender, but 3D Studio etc. also possbile via Blender import)</li>
+			<li>Auch Simulationsszenarien werden bei MORSE in Python definiert, wofür es eine eigene API, die sogenannte "BUilder API" gibt.
+                Wie das dann ungefähr aussieht, möchte ich an diesem kleinen Beispiel kurz zeigen. Hiel wollen wir mit einem Roboter eine 2D Gridmap
+                einer Umgebung erstellen. Dazu (...) ERKLÄREN</li>
+            <li>Und das ist schon alles an Code, was man braucht um loszulegen. Wenn wir das Szenario nun starten, sieht es folgendermaßen aus und wir
+                könenn ...
 		</ul>
 	</details>
 </section>
@@ -293,44 +292,6 @@ $ morse run pr2_kitchen
 </section>
 
 <section>
-<h2>Navigation using move_base and AMCL localization</h2>
-<br/>
-<br/>
-<pre class="prettyprint">
-[...]	
-motion = MotionXYW() # Motion controller
-motion.add_interface('ros', topic='/cmd_vel')
-robot.append(motion)
-[...]
-</pre>
-<br />
-<br />
-<br />
-</section>
-
-<section>
-<h2>
-<pre>
-$ morse run pr2_kitchen
-</pre>
-</h2>
-<div>
-<video muted style="position:absolute;top:150px; left:0px; width: 100%;" src="../media/videos/pr2_move_base_wide.webm#t=3"></video> 
-</div>
-</section>
-
-<!--section>
-<h3>MORSE Principles: Components</h3>
-<ul class="incremental">
-    <li>MORSE simulations are made of <i>components</i>
-<li>Base components are <b>sensors</b>, <b>actuators</b> and <b>robots</b>
-<li>They can be linked to <b>interfaces</b>, <b>modifiers</b> and <b>overlays</b>
-<li>They are defined by a mandatory Python description
-<li>They optionally come with a (Blender) 3D mesh
-</ul>
-</section-->
-
-<section>
 	<h3>Available Robot Components</h3>
     <ul>
 		<li>14 robots
@@ -341,47 +302,43 @@ $ morse run pr2_kitchen
 	<img style="position:absolute;top:320px;left: 120px; width: 70%;" src="../media/images/all_components_3rows.png"/>
 	
 <details>
-A click on the image redirect to MORSE Component Library in the on-line doc.<br/>
-
-Scroll there to quickly show the available components.
-</details>
-</section>
-
-
-
-<section>
-    <h3>MORSE Principles: Inner loop</h3>
-    <ul style="font-size:0.8em">
-        <li><b>Datastreams</b> and <b>services</b> for interaction,
-        <li>Datastreams: <b>published</b> by MORSE for sensors, <b>read</b> for actuators,
-        <li><b>Strong decoupling</b>: components are <b>not aware</b> of surrounding interfaces/modifiers,
-        <li><b>Modifiers</b> alter the sensors/actuators data, typically to add noise,
-        <li>Components' <i>local data</i> are exported/imported by <b>external interfaces</b> like sockets or ROS
-        <li>Services: RPC-style interaction, can be <b>synchronous</b> or <b>asynchronous</b>
+    <ul>
+        <li>Mit dieser Python API kann man beliebig alle bestehenden Komponenten kombinieren und sich seine Simulationsumgebungen zusammenbauen</li>
+        <li>MORSE beinhaltet mittlerweile ...</li>
     </ul>
-<details>
-- <a href="../media/images/main_loop.svg">main_loop.svg</a>
 </details>
 </section>
+
 
 <section>
     <h3>MORSE Principles: Interfaces</h3>
     <ul style="font-size:0.8em">
-        <li>Generic: <em>sockets</em>, <em>text</em>,
-        <li>Specific to robotics: <em>middlewares</em>
-            <ul>
+         <li><b>RPC-oriented</b> or <b>datastream-oriented</b> communication</li>
+         <li><b>Modifiers</b> alter the sensors/actuators data, typically to add noise</li>
+         <li><b>Strong decoupling</b>: components are not aware of surrounding interfaces/modifiers</li>
+         <li>Generic interfaces: <em>sockets</em>, <em>text</em>,
+         <li>Supported <b>robotic middlewares</b>: <em>ROS, YARP, GenoM/Pocolibs, OpenRTM, MOOS</em>
+         <li>Language <em>bindings</em> for Python. Easy to develop for other languages through the socket interface.
+            <!--ul>
             <li><img style="height: 21px; margin-bottom: -5px;" src="../media/images/logo-ros.png" />
-            <li><img style="height: 21px; margin-bottom: -5px;" src="../media/images/logo-yarp.png" />
+            <li>YARP
             <li>GenoM/Pocolibs
             <li>OpenRTM
             <li>MOOS
-            </ul>
-        <li>Mapping to interaction semantics: <em>RPC-oriented</em> or <em>datastream-oriented</em>
-        <li>Language <em>bindings</em> for Python. Easy to develop for other languages through the socket interface.
-        <li>Simulation <b>introspection</b> possible through sockets interface
+            </ul-->
     </ul>
 <details>
 <ul>
+    <li>Zur Kommunikation bietet MORSE verschiedene Interfaces, einmal ein Data Stream basiertes und ein Remote Procedure Calls (synchron und asynchron)</li>
+    <li>Es können sog. Modifiers verwendet werden um z.B. Rauschen auf Sensordaten zu legen.</li>
+    <li>Starke Trennung zwischen Komponenten und ihren Modifiers / Middlewares</li>
+    <li>standardmässig gibt es generische Interfaces wie Sockets und text ...</li>
+    <li>Aber auch support für verschiedene Robotik Middleware wie ...</li>
+    <li>Hier findet man auch zu großem Teil Beiträge von mir, da ich zusammen mit einem Kollegen vom LAAS CNRS aufgesetzt habe und mittlerweile von einigen
+        Leuten (auch Firmen) verwendet wird.</li>
+    <li>Als Programmiersprache für die Middlewares wird Python verwendet, allerdings ist es einfach, auch mit anderen Sprachen zu kommunizieren, z.B. durch
+        das Socket Interface (bzw. C-Libraries in Python)
+    
     <li>ROS: well, <strong>CONTRIBUTION:</strong>ROS middleware, mention problem Py2/3 etc.
     <li>GenoM/pocolibs: Generator of Modules and its communication layer, developed at LAAS
     <li>OpenRTM: Open source Robotic Technology Middleware, developed by Japan's National Institute of Advanced Industrial Science and Technology
@@ -392,7 +349,7 @@ Scroll there to quickly show the available components.
 </section>
 
 <section> 
-	<h3>Goals for simulated HRI Interface</h3>
+	<h3>Simulated HRI Interface</h3>
 	<ul style="font-size:0.8em">
 		<li><strong>Intuitive</strong> Interface
 		<li>Controllable via <strong>Keyboard and Mouse</strong> (or Kinect)
@@ -404,11 +361,24 @@ Scroll there to quickly show the available components.
 	<img style="position:absolute;top:380px; left:400px; width: 30%;" src="../media/images/morse_hri_1st_person.png"/>
 	<details>
     <ul>
-        <li>Control similar to 3D Computer games (Mouse for direction, keyboard for moving)
+        <li>Eine weitere Conribution von mir in Zusammenarbeit mit einem Studenten ist das Interface für den simulierten Menschen.</li>
+        <li>Als wir anfienge, den Simulator zu benutzen, war zwar schon ein steuerbares Modell eines Menschen vorhanden, allerdings war es in der
+            Form nur äußerst schwer, pick- and place Aktionen auszuführen.</li>
+        <li>Deswegen haben wir uns dazu entschlossen, ein Intuitive Steuerungsinterface für dein Menschen zu entwickeln, durch das wir den Menschen
+            per Keyboard und Maus verwenden können um Objekte in der simulierten Umgebung bewegen zu können, Türen und Schubladen benutzen zu können und
+            auch die Verwendung von Schaltern zu ermöglichen. </li>
+        <li>Wir haben dabei auch darauf geachtet, dass die Körperhaltung des Menschen dabei möglichst realistisch ist und ein simuliertes full body
+            motion tracking system integriert.
+        <li>Dazu haben wir uns einige Ansätze von 3D Computerspielen abgeschaut und der Mensch ist nur so steuerbar, dass ihn von einer Kamera sieht, die
+            kurz hinter ihm ist während man läuft (wie Bild links). Die Cam versucht auch zu vermeiden, dass die Sicht auf den Menschen durch Objekte verdeckt wird. Wenn
+            man mit Objekten in der Umgebung interagieren möchte, wird in eine 1st Person Perspektive gewechselt und Aktionen eingeblendet, die für das
+            jeweilige Objekt verfügar sind.
+            
+        <!--li>Control similar to 3D Computer games (Mouse for direction, keyboard for moving)
 		<li>3rd person view behind avtar for movement, first person view for object interactions
 		<li>interactive environment, coded with Blender BGE logic bricks
 		<li>Objects placement using Blender Internal IK (ITasc)
-		<li>Simulated object recognition using MORSE "semantic camera" and ROS TF   
+		<li>Simulated object recognition using MORSE "semantic camera" and ROS TF</li-->
     </ul>
     </details>
 </section>
@@ -418,6 +388,13 @@ Scroll there to quickly show the available components.
         <video style="left:0px" src="../media/videos/hri.webm"></video> 
         <!--figcaption style="color:white">Human-Robot interaction</figcaption-->
     </figure>
+    <details>
+        <ul>
+            <li>In AKtion sieht das ganze dann so aus...</li>
+            <li>Wie man kurz gesehen hat, kann man sich auch alle Objekte anzeigen lassen, mit denen man interagieren kann...</li>
+            <li>Der Mensch kann auch Objekte verdecken wie man hier sieht, das ist allerdings eher eine Eigenschaft des Sensors des Roboters</li>
+        </ul>
+    <details>
 </section>
 
 <section>
@@ -425,9 +402,13 @@ Scroll there to quickly show the available components.
     <video muted style="left:0px;width:800px" src="../media/videos/morse_multi.webm#t=15"></video>
 <details>
 <ul>
-    <li>Two MORSE instance running and a "multinode-server"
+    <li>Es ist auch möglich, die Simulation auf mehrere Rechner zu verteilen, wie man in dem Video zum Beispiel sehen kann. Hier sieht man 2
+        verschiedene Instanzen von MORSE, die über den "Multinode Server kommunizieren."</li>
+    <li>Getestet haben wir das mit 10 nodes, hat geklappt</li>
+    
+    <!--li>Two MORSE instance running and a "multinode-server"
     <li>Each robot is controlled by a node
-    <li>Tested with 10 nodes (needs to work on sync : WIP)
+    <li>Tested with 10 nodes (needs to work on sync : WIP)</li-->
 </ul>
 </details>
 </section>
@@ -443,6 +424,12 @@ Scroll there to quickly show the available components.
 		<li>Force/torque sensores
         <li>...(you name it!)</li>
     </ul>
+    <details>
+        <ul>
+            <li>Es gibt allerdinge auch einige Dinge, die ein MORSE noch nicht verfügar sind, allerdings gerne gewünsch wären...</li>
+            <li>Mit dabei zum Beispiel ... </li>
+        </ul>
+    </details>
 </section>
 
 <section>
@@ -467,7 +454,8 @@ Scroll there to quickly show the available components.
     </ul>
      <details>
 		<ul>
-        <li>So far for the MORSE simulator, in the next 10 minutes, I want to give you a general overview about what I have done during my PhD except for working on the simulator</li>
+        <li>So weit zum MORSE Simulator, jetzt möchte ich noch etwas darüber erzählen, was ich während meiner Promotion außer Simulation noch so gemacht habe und auf
+            einen Ansatz zur Erkennung von menschlichen Aktivitäten in Alltagssituationen eingehen.</li>
 		</ul>
     </details>
 </section>
@@ -484,9 +472,9 @@ Scroll there to quickly show the available components.
 		</div>	
 		 <details>
 			<ul>
-	        <li>Das Bild hier zeigt ganz gut, was wir uns als Ziel gesetzt haben</li>
-			<li>Activity Recognition für Roboter in Alltagssituationen (Bild)</li>
-			<li>Basierend auf Motion tracking Daten von Kinect</li> 
+	        <li>Das Bild hier zeigt ganz gut, was wir uns als Ziel gesetzt haben...</li>
+            <li>Wir sehen hier eine Roboter in einer typischen Küchen und Ich bin gerade dabei den Tisch zu decken. Die Aufgabe des Roboter ist es hierbei erstmal nur
+                basierend auf Motion Tracking Daten seiner Kinect zu erkennen, was ich gerade mache.<li>
 			</ul>
 	    </details>
 </section>
@@ -494,11 +482,23 @@ Scroll there to quickly show the available components.
 <section>
 <h3>Goals</h3>
 <ul style="font-size:0.8em">
-	<li>Robot should be aware of human task execution to enable more human aware and adaptive planning</li>
-	<li>Inexpensive and unobtrusive sensor setup</li>
-	<li>Simple and noise-resistant features</li>
-	<li>Anticipate likely future activities</li>
+	<li>Robot should be <b>aware of human task execution</b> to enable more human aware and adaptive planning</li>
+	<li><b>Inexpensive and unobtrusive</b> sensor setup</li>
+    <li>Activity models obtained from observing <b>habitual behavior</b></li>
+	<li><b>Simple and noise-resistant</b> features</li>
+	<!--li>Anticipate likely future actions/activities</li-->
 </ul>
+<details>
+    <ul>
+        <li>Wir wollen das unser Roboter besser auf seinen menschlichen Partner eingeht und ihn bei der Planung seiner Aktionen berücksichtigt und dazu ...</li>
+        <li>... denke wir, dass er zunächst eine Ahnung davon haben sollte, was der Mensch tut.</li>
+        <li>Eine weitere Prämisse war, dass unser Sensor Setup billig und wenig aufdringlich sein sollte. Im AR Bereich: Viel RFID auf OBJ, komplexe Motion Tracking
+            Systeme, das wollten wir gerade nicht</li>
+        <li>Außerdem wollten wir, dass der Roboter Modell von meschlichen Gewohnheiten lernt um eine Ahnung zu bekommen, was der Mensch normalerweise an bestimmten Orten tut.</li>
+        <li>... und es sollten einfache Features verwendet werden, die unanfällug gegen Rauschen sind, welches wir bei billigeren Sensoren erwarten.</li>
+        <li>...</li>
+    </ul>
+</details>
 </section>
 
 <section>
@@ -507,20 +507,30 @@ Scroll there to quickly show the available components.
 		<li><strong>Spatial model</strong> representing regions where humans generally are located during pick- and place tasks</li>
 		<li>Learned from observing <strong>motion tracking data</strong> during human task execution</li>
 		<!--li>Use High-Level Hierarchical HMM to perform Activity Recognition observing human task performance</li-->
-		
 			<img style="position:absolute;top:330px; left:100px; width: 30%;" src="../media/images/SPRAM_data_overview.png"/>
 			<img style="position:absolute;top:365px; left:420px; width: 30%;" src="../media/images/full_spatial_model_1.png"/>
 	</ul>
+    <details>
+        <li>Als Grundlage für unsere Daten haben wir (auf einem bereits vorhandenen datensatz) gelernt, wo Menschen normalerweise stehen wenn
+            sie Objekte aus Schränken, Schubladen oder ähnlichen Lagerplätzen holen.</li>
+        <li>
+    </details>
 </section>
 
 <section>
 	<h3>HHMM-based Activity Recognition</h3>
 		<ul style="font-size:0.8em">
 			<li>Generate high-Level <strong>hierarchical HMM (HHMM)</strong> to perform activity recognition observing human task performance</li>
-			<li>Use Forward-Backward Algorithm to calculate posterior marginals of internal states of HHMM</li>
+			<li>Use <b>Forward-Backward Algorithm</b> to calculate posterior marginals of internal states of HHMM</li>
 		</ul>
 			<img style="position:absolute;top:320px; left:150px; width: 60%;" src="../media/images/hhmm.png"/>
 
+</section>
+
+<section>
+	<h3>Scenario: Human Morning Routine</h3>
+    <img style="position:absolute;top:120px; left:150px; width: 60%;" src="../media/images/SPRAM_dataset.png"/>
+    
 </section>
 
 <section>
